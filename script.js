@@ -138,7 +138,9 @@ function updateUI() {
         <img src="./images/image 60.png" alt="User">
       </div>
       <div class="menu-icon">
-        <img src="./images/image 61.png" alt="Menu">
+          <a href="lichsudatve.html">
+            <img src="./images/image 61.png" alt="Menu">
+          </a>
       </div>
     `;
 
