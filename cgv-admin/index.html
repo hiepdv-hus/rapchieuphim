@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet App</title>
+    <!-- Thêm thư viện Chart.js từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- CSS only -->
     <link
@@ -51,38 +53,38 @@
         </div>
 
         <ul class="list-unstyled components">
-          <li class="">
+          <li class="active">
             <a href="./index.html">
               <i class="bi bi-house"></i>
               Trang chủ
             </a>
           </li>
-          <li class="active">
-            <a href="./index.html">
+          <li class="">
+            <a href="./phim.html">
               <i class="bi bi-pencil-square"></i>
               Quản lý phim
             </a>
           </li>
           <li class="">
-            <a href="./pages/edit.html">
+            <a href="rap.html">
               <i class="bi bi-pencil-square"></i>
               Quản lý rạp
             </a>
           </li>
           <li class="">
-            <a href="./pages/search.html">
+            <a href="phongchieu.html">
               <i class="bi bi-pencil-square"></i>
               Quản lý phòng chiếu
             </a>
           </li>
           <li class="">
-            <a href="./pages/search.html">
+            <a href="suatchieu.html">
               <i class="bi bi-pencil-square"></i>
               Quản lý suất chiếu
             </a>
           </li>
           <li class="">
-            <a href="./pages/search.html">
+            <a href="ve.html">
               <i class="bi bi-pencil-square"></i>
               Quản lý vé
             </a>
@@ -94,203 +96,44 @@
       <div id="content">
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">Pet Management</a>
+            <a class="navbar-brand" href="#">Trang chủ</a>
+            <button class="btn btn-danger"><a href="../admin.html">Đăng xuất</a></button>
           </div>
         </nav>
-
-        <!-- Modal -->
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Thêm mới</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  onclick="clearInput()"
-                ></button>
+        <div class="container">
+          <div class="doanhthu">
+              <div class="card shadow p-3">
+                  <h5>Số vé đặt</h5>
+                  <p>100</p>
               </div>
-              <div class="modal-body">
-                <div class="container" id="main">
-                  <div
-                    class="row justify-content-center align-items-center mt-4"
-                  >
-                    <div class="col-lg-10 col-lg-offset-10">
-                      <form id="edit-form">
-                        <div class="form-group row mb-3">
-                          <label for="input-id" class="col-sm-3 col-form-label"
-                            >Pet ID</label
-                          >
-                          <div class="col-sm-9">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="input-id"
-                              placeholder="Input ID"
-                            />
-                          </div>
-                        </div>
-                        <div class="form-group row mb-3">
-                          <label
-                            for="input-name"
-                            class="col-sm-3 col-form-label"
-                            >Pet Name</label
-                          >
-                          <div class="col-sm-5">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="input-name"
-                              placeholder="Input Name"
-                            />
-                          </div>
-                          <label
-                            for="input-age"
-                            class="col-sm-1 col-form-label"
-                            style="text-align: right"
-                            >Age</label
-                          >
-                          <div class="col-sm-3">
-                            <input
-                              type="number"
-                              class="form-control"
-                              id="input-age"
-                              placeholder="Input Age"
-                            />
-                          </div>
-                        </div>
-                        <div class="form-group row mb-3">
-                          <label
-                            for="input-type"
-                            class="col-sm-3 col-form-label"
-                            >Type</label
-                          >
-                          <div class="col-sm-9">
-                            <select class="form-control" id="input-type">
-                              <option>Select Type</option>
-                              <option>Dog</option>
-                              <option>Cat</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group row mb-3">
-                          <label
-                            for="input-weight"
-                            class="col-sm-3 col-form-label"
-                            >Weight</label
-                          >
-                          <div class="col-sm-3">
-                            <input
-                              type="number"
-                              class="form-control"
-                              id="input-weight"
-                              placeholder="Input Weight"
-                            />
-                          </div>
-
-                          <label
-                            for="input-length"
-                            class="col-sm-3 col-form-label"
-                            style="text-align: right"
-                            >Length</label
-                          >
-                          <div class="col-sm-3">
-                            <input
-                              type="number"
-                              class="form-control"
-                              id="input-length"
-                              placeholder="Input Length"
-                            />
-                          </div>
-                        </div>
-                        <div class="form-group row mb-3">
-                          <label class="col-sm-3 col-form-label">Color</label>
-                          <div class="col-sm-3">
-                            <input
-                              type="color"
-                              class="form-control"
-                              id="input-color-1"
-                            />
-                          </div>
-                          <label
-                            for="input-breed"
-                            class="col-sm-3 col-form-label"
-                            style="text-align: right"
-                            >Breed</label
-                          >
-                          <div class="col-sm-3">
-                            <select class="form-control" id="input-breed">
-                              <option>Select Breed</option>
-                              <option>Tabby</option>
-                              <option>Domestic Medium Hair</option>
-                              <option>Mixed Breed</option>
-                              <option>Domestic Short Hair</option>
-                              <option>Terrier</option>
-                              <option>Greyhound</option>
-                              <option>Persian</option>
-                              <option>Rottweiler</option>
-                            </select>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+              <div class="card shadow p-3">
+                  <h5>Doanh thu</h5>
+                  <p>50</p>
               </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                  onclick="clearInput()"
-                >
-                  Thoát
-                </button>
-                <button type="button" class="btn btn-primary" id="submit-btn">
-                  Thêm mới
-                </button>
+              <div class="card shadow p-3">
+                  <h5>Lượng truy cập</h5>
+                  <p>50</p>
               </div>
+          </div>
+          <div class="card shadow mt-4 mb-4 p-3">
+              <h5>Biểu đồ</h5>
+              <canvas id="salesChart" width="400" height="200"></canvas>
+          </div>
+          <div class="mb-5" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="shadow card p-3 bg-white">
+              <h5>THỨ HẠNG RẠP</h5>
+              <p>Thứ 1: CGV Thanh Xuân</p>
+              <p>Thứ 2: Lotte Cinema Mỹ Đình</p>
+              <p>Thứ 3: BHD Star Phạm Hùng</p>
+            </div>
+            <div class="card p-3 bg-white">
+              <h5>RẠP CÓ DOANH THU NHIỀU NHẤT</h5>
+              <p>Tên: CGV Thanh Xuân</p>
+              <p>Doanh thu: 1200$</p>
+              <p>Lượt truy cập: 886</p>
             </div>
           </div>
-        </div>
-        <div class="container" style="max-width: 90%">
-          <!-- Button trigger modal -->
-          <div class="d-flex justify-content-end">
-            <button
-              type="button"
-              class="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-            >
-              Thêm mới
-            </button>
-          </div>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Type</th>
-                <th scope="col">Weight</th>
-                <th scope="col">Length</th>
-                <th scope="col">Breed</th>
-                <th scope="col">Color</th>
-                <th scope="col">Date Added</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody id="tbody"></tbody>
-          </table>
-        </div>
+      </div>
       </div>
     </div>
 
@@ -303,5 +146,35 @@
     <script></script>
     <script src="./script/storage.js"></script>
     <script src="./script.js"></script>
+
+    <script>
+        // Dữ liệu mẫu cho biểu đồ
+        const salesData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Sales',
+                data: [1000, 1500, 1200, 1800, 2000, 1700],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
+    
+        // Lấy thẻ canvas và vẽ biểu đồ doanh số
+        const salesChartCanvas = document.getElementById('salesChart').getContext('2d');
+        const salesChart = new Chart(salesChartCanvas, {
+            type: 'line',
+            data: salesData,
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
   </body>
 </html>

@@ -346,3 +346,9 @@ a.article:hover {
   width: 94%;
   text-align: center;
 }
+
+.doanhthu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}

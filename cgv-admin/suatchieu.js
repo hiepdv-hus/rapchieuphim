@@ -1,8 +1,7 @@
 "use strict";
 //Lấy danh sách thú cưng từ localStorage
-let petList = JSON.parse(getFromStorage("petList", "[]"));
+let petList = JSON.parse(getFromStorage("suatchieu", "[]"));
 //Lấy danh sách Breed từ localStorage
-let breedArr = JSON.parse(getFromStorage("breedArr", "[]"));
 
 //Lấy các DOM element
 const submitBtn = document.getElementById("submit-btn");
@@ -30,9 +29,7 @@ const validatePetData = function (data) {
     !data.id ||
     !data.name ||
     !data.category ||
-    !data.thoiluong ||
-    !data.lichchieu ||
-    !data.giave
+    !data.thoiluong
   ) {
     alert("All fields are required!");
     return false;
@@ -53,6 +50,7 @@ function renderTableData(petList) {
   // Xóa toàn bộ nội dung của bảng
   tableBodyEl.innerHTML = "";
 
+  let index = 1
   // Duyệt qua mảng petArr để tạo hàng cho từng thú cưng
   petList.forEach((pet) => {
     console.log('pet', pet);
@@ -61,16 +59,13 @@ function renderTableData(petList) {
     pet.dateAdded = new Date(pet.dateAdded);
 
     const row = document.createElement("tr");
-
     // Tạo nội dung HTML cho hàng bằng Template String
     row.innerHTML = `
+        <th scope="row">${index++}</th>
         <th scope="row">${pet.id}</th>
 				<td>${pet.name}</td>
 				<td>${pet.category}</td>
-				<td>${pet.thoiluong} phút</td>
-				<td>${pet.lichchieu}</td>
-				<td>${pet.giave}</td>
-				<td><img width="50" src="image 2.png"/></td>
+				<td>${pet.thoiluong}</td>
 				<td>${pet.dateAdded.getDate()}/${
       pet.dateAdded.getMonth() + 1
     }/${pet.dateAdded.getFullYear()}</td>
@@ -100,9 +95,7 @@ const clearInput = () => {
   thoiluongInput.value = "Select Type";
   // vaccinatedInput.checked = false;
   nameInput.value = "";
-  categoryInput.value = "";
-  lichchieuInput.value = "";
-  giaveInput.value = "";
+  thoiluongInput.value = "";
   // dewormedInput.checked = false;
   // sterilizedInput.checked = false;
 
@@ -123,12 +116,8 @@ const startEditPet = (petId) => {
     idInput.value = pet.id; //Cố định phần ID cho input đầu vào, hiển thị thông tin hiện tại của pet
     thoiluongInput.value = pet.thoiluong;
     nameInput.value = pet.name;
-    categoryInput.value = pet.category;
-    lichchieuInput.value = pet.lichchieu;
-    giaveInput.value = pet.giave;
-    imgInput.value = pet.img;
+    thoiluongInput.value = pet.category;
 
-    renderBreed(breedArr);
     //Xóa class active khỏi form để hiển thị bảng chỉnh sửa
     editForm.classList.remove("active");
   } else {
@@ -147,7 +136,7 @@ const deletePet = (petId) => {
     if (petIndex !== -1) {
       petList.splice(petIndex, 1); // Xóa 1 phần tử tại vị trí petIndex
       //Lưu petList xuống LocalStorage
-      saveToStorage("petList", JSON.stringify(petList));
+      saveToStorage("suatchieu", JSON.stringify(petList));
       ///
       renderTableData(petList); // Reload lại bảng sau khi xóa
       // resetHealthyBtn();
@@ -167,11 +156,8 @@ if (submitBtn) {
     const petData = {
       id: idInput.value,
       name: nameInput.value,
-      category: categoryInput.value,
+      category: thoiluongInput.value,
       thoiluong: thoiluongInput.value,
-      lichchieu: lichchieuInput.value,
-      giave: giaveInput.value,
-      img: imgInput.value,
       // vaccinated: vaccinatedInput.checked,
       // dewormed: dewormedInput.checked,
       // sterilized: sterilizedInput.checked,
@@ -186,7 +172,7 @@ if (submitBtn) {
     if (validate) {
       petList.push(petData);
       //Lưu petList xuống LocalStorage
-      saveToStorage("petList", JSON.stringify(petList));
+      saveToStorage("suatchieu", JSON.stringify(petList));
       //Thiết lập lại giao diện web
       clearInput();
       renderTableData(petList);
